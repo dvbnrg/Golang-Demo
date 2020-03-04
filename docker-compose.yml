@@ -11,21 +11,21 @@ services:
       - "3306"
     environment:
       MYSQL_ROOT_PASSWORD: supersecret
-      MYSQL_DATABASE: book
+      MYSQL_DATABASE: repos
 
-  api:
-    build:
-      context: .
-      dockerfile: api/Dockerfile
-    environment:
-      MYSQL_USER: root
-      MYSQL_ROOT_PASSWORD: supersecret
-      MYSQL_DATABASE: tcp(db:3306)/book
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./:/go/src/github.com/dvbnrg/booksAPI
-    depends_on:
-      - db
-    links:
-      - "db:database"
+#   api:
+#     build:
+#       context: .
+#       dockerfile: api/Dockerfile
+#     environment:
+#       MYSQL_USER: root
+#       MYSQL_ROOT_PASSWORD: supersecret
+#       MYSQL_DATABASE: tcp(db:3306)/repos
+#     ports:
+#       - "1323:1323"
+#     volumes:
+#       - ./:/go/src/github.com/dvbnrg/Golang-Demo
+#     depends_on:
+#       - db
+#     links:
+#       - "db:database"
