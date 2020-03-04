@@ -30,5 +30,11 @@ func load(c echo.Context) error {
 	jsonparser.ArrayEach(data, func(value []byte, dataType jsonparser.ValueType, offset int, err error) {
 		fmt.Println(jsonparser.GET())
 	})
+	db, err := gorm.Open("mysql", "root:supersecret@tcp(127.0.0.1:3306)/ormdemo?charset=utf8&parseTime=True")
+	defer db.Close()
+	if err!=nil{
+	log.Println(“Connection Failed to Open”)
+	} 
+	log.Println(“Connection Established”)
 	return nil
 }
